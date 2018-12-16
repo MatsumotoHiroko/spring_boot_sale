@@ -15,7 +15,7 @@ public interface SaleRepository extends MongoRepository<Sale, String> {
 	List<Sale> findByCity(@Param("name") String name);
 	
 	List<Sale> findByDescriptionLike(@Param("name") String name);
-	List<Sale> findByStateLike(@Param("name") String name);
+	List<Sale> findByStreetLike(@Param("name") String name);
 	
 	List<Sale> findAllByOrderByPriceAsc();
 	List<Sale> findAllByOrderByPriceDesc();
