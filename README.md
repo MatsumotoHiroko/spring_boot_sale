@@ -1,10 +1,17 @@
 # Spring Boot Sample Sale API
 It's an imaginary "sales" platform.
 
-# requirement
-## JDK 1.8
+# environment
+## running docker compose
+[instration docker compose](https://docs.docker.com/compose/install/)
+```
+$ docker-compose up
+```
+
+## requirement
+#### JDK 1.8
 [download](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-## MongoDB
+#### MongoDB
 [instration manual](https://docs.mongodb.com/manual/installation/)
 
 # parameter
