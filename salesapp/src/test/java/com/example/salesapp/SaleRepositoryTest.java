@@ -18,13 +18,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SaleRepositoryTest {
 
 	@Qualifier("saleRepository")
-    @Autowired
-    SaleRepository repository;
+	@Autowired
+	SaleRepository repository;
 	Sale sale1;
 	String title1 = "testitem1";
-	
+
 	@Before
-    public void setUp() {
+	public void setUp() {
 		sale1 = new Sale();
 		sale1.setTitle(title1);
 		sale1.setDescription("test description");
@@ -36,76 +36,73 @@ public class SaleRepositoryTest {
 		sale1.setStreet("1-7-1 Nagata");
 		sale1.setLatitude(35.67571);
 		sale1.setLongitude(139.74481);
-	
+
 		repository.save(sale1);
-        
+
 	}
-	
-	@Test
-    public void readsSaleByTitle() {
 
-        List<Sale> result = repository.findByTitle(title1);
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
 	@Test
-    public void readsSaleByCountry() {
+	public void readsSaleByTitle() {
 
-        List<Sale> result = repository.findByCountry("Japan");
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
+		List<Sale> result = repository.findByTitle(title1);
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByState() {
+	public void readsSaleByCountry() {
 
-        List<Sale> result = repository.findByState("Tokyo");
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
+		List<Sale> result = repository.findByCountry("Japan");
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByCity() {
+	public void readsSaleByState() {
 
-        List<Sale> result = repository.findByCity("Chiyoda");
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
+		List<Sale> result = repository.findByState("Tokyo");
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByDescriptionLike() {
+	public void readsSaleByCity() {
 
-        List<Sale> result = repository.findByDescriptionLike("description");
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
-	
+		List<Sale> result = repository.findByCity("Chiyoda");
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByStreetLike() {
+	public void readsSaleByDescriptionLike() {
 
-        List<Sale> result = repository.findByStreetLike("Nagata");
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
+		List<Sale> result = repository.findByDescriptionLike("description");
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByPriceBetween() {
+	public void readsSaleByStreetLike() {
 
-        int grater = 99;
-        int less = 101;
-        List<Sale> result = repository.findByPriceBetween(grater, less);
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
-	
+		List<Sale> result = repository.findByStreetLike("Nagata");
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@Test
-    public void readsSaleByStockBetween() {
+	public void readsSaleByPriceBetween() {
 
-        int grater = 49;
-        int less = 51;
-        List<Sale> result = repository.findByStockBetween(grater, less);
-        assertEquals(result.get(0).getTitle(), title1); 
-    }
-	
+		int grater = 99;
+		int less = 101;
+		List<Sale> result = repository.findByPriceBetween(grater, less);
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
+	@Test
+	public void readsSaleByStockBetween() {
+
+		int grater = 49;
+		int less = 51;
+		List<Sale> result = repository.findByStockBetween(grater, less);
+		assertEquals(result.get(0).getTitle(), title1);
+	}
+
 	@After
 	public void tearDown() {
 		repository.deleteAll();
 	}
 }
-
